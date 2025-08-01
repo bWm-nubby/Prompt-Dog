@@ -880,15 +880,15 @@ async def privacy(ctx: ApplicationContext):
     base.add_field(name="What we collect", value="When an image is sent in a **monitored channel**, the bot temporarily downloads it to memory (RAM) for processing.\nIt extracts metadata (like generation parameters) if present.\nBasic user info (username, color) is used for display purposes (e.g., embed footers).\n***We do not store your images or extracted metadata permanently.*** Data is processed in memory and discarded.", inline=False)
     base.add_field(name="What we store", value="The only persistent storage used is for:\n- The list of monitored channel IDs.\n- The bot's configuration file (`config.toml`).\nError logs may contain snippets of metadata temporarily if parsing fails, primarily for debugging by the bot operator.", inline=False)
     base.add_field(name="What we share", value="***We do not share any of your data or images with third parties.***", inline=False)
-    base.add_field(name="Open Source", value="This bot is open source! Find the code [here](https://github.com/yoinked-h/PI-Chan).\nLicensed under the [MIT License](https://github.com/yoinked-h/PI-Chan/blob/main/LICENSE).\nBased on prior work by salt and NoCrypt.", inline=False)
+    base.add_field(name="Open Source", value="This bot is open source! Find the code [here](https://github.com/bWm-nubby/Prompt-Dog).\nLicensed under the [MIT License](https://github.com/bWm-nubby/Prompt-Dog/blob/master/LICENSE).\nBased on prior work by salt and NoCrypt.", inline=False)
 
     is_monitored = ctx.channel_id in monitored
     is_gemini_monitored = ctx.channel_id in chatmonitored
-    footer_text = f"Maintained by <@444257402007846942> | This channel is {'[monitored](<https://www.youtube.com/watch?v=kbNdx0yqbZE>)' if is_monitored else '[not monitored](https://www.youtube.com/watch?v=bnA9dt7Ul7c>)'}"
+    footer_text = f"Maintained by <@467127086776188930> | This channel is {'[monitored](<https://www.youtube.com/watch?v=kbNdx0yqbZE>)' if is_monitored else '[not monitored](https://www.youtube.com/watch?v=bnA9dt7Ul7c>)'}"
     icon = ctx.author.display_avatar if ctx.author else client.user.display_avatar
     base.set_footer(text=footer_text, icon_url=icon)
     if is_gemini_monitored:
-        base.add_field(name="Gemini Chat Integration", value="Note: this channel has gemini chat integration enabled! If you send a message [that doesnt start with just `,`] it can be sent to Gemini's API, and that has its own can of worms relating privacy.")
+        base.add_field(name="Chat Integration", value="Note: this channel has chat integration enabled! If you send a message [that doesnt start with just `,`] it can be sent to either Gemini, OpenRouter, or OpenAI's API, and that has its own can of worms relating privacy.")
     # Bot avatar as image
     if client.user.display_avatar:
         base.set_thumbnail(url=client.user.display_avatar.url)
